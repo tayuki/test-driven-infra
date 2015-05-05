@@ -14,7 +14,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
-  # config.vm.box_check_update = false
+  config.vm.box_check_update = false
+
+	config.vm.provider :digital_ocean do |provider, override|
+		override.ssh.private_key_path = "~/.ssh/id_rsa"
+		override.vm.box = "AndrewDryga/digital-ocean"
+		provider.token = ENV["DIGITALOCEAN_ACCESS_TOKEN"]
+		provider.image = "centos-7-0-x64"
+		provider.region = "sgp1"
+		provider.size = "512MB"
+
+		if ENV['WERCKER'] == "true"
+			provider.ssh_key_name = "wercker"
+		else
+			provider.ssh_key_name = "MBP"
+		end
+
+	end
+			
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,

@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		provider.size = "512MB"
 
 		if ENV['WERCKER'] == "true"
-			provider.ssh_key_name = "wercker"
+			provider.ssh_key_name = "digitalocean"
 		else
 			provider.ssh_key_name = "MBP"
 		end

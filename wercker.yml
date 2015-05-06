@@ -35,6 +35,9 @@ build:
         name: Run vagrant up
         code: vagrant up --provider=digital_ocean
     - script:
+        name: Run itamae
+        code: itamae ssh --vagrant ntp_recipe.rb
+    - script:
         name: Run rake spec
         code: rake spec
   

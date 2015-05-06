@@ -3,8 +3,7 @@ package 'ntp' do
 end
 
 service 'ntpd' do
-  action :start
-  action :enable
+  action [ :start, :enable ]
 end
 
 

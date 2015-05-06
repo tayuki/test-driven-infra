@@ -19,27 +19,27 @@ build:
     - script:
       name: RUN chmod 0440 $HOME/.ssh/id_rsa
       code: chmod 0440 $HOME/.ssh/id_rsa
-    - script
+    - script:
       name: gem install
       code: sudo gem install serverspec --pre --no-ri --no-rdoc
-    - script
+    - script:
       name: Get Vagrant
       code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
-    - script
+    - script:
       name: Install Vagrant
       code: sudo dpkg -i vagrant_1.6.3_x86_64.deb
-    - script
+    - script:
       name: Run vagrant plugin install
       code: vagrant plugin install vagrant-digitalocean
-    - script
+    - script:
       name: Run vagrant up
       code: vagrant up --provider=digital_ocean
-    - script
+    - script:
       name: Run rake spec
       code: rake spec
   
   after-steps:
-    - script
+    - script:
       name: Run vagrant destroy
       code: vagrant destroy --force
  
